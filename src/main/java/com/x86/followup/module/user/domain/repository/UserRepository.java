@@ -11,7 +11,12 @@ public interface UserRepository {
     User save(User user);
     void update(User user);
     void delete(UserId id);
+
+    Optional<User> findByIdentification(String identification);
+
     List<User> findAll();
     Optional<User> findById(UserId id);
     Optional<User> findByIdentification(UserIdentification identification);
+
+    void deleteById(UserId id);
 }

@@ -1,7 +1,6 @@
 package com.x86.followup.module.user.domain.model;
 
 import java.util.Objects;
-
 import com.x86.followup.module.user.domain.exception.UserExistException;
 import lombok.Getter;
 
@@ -10,7 +9,7 @@ public class User {
     private UserId id;
     private final UserName name;
     private final UserIdentification identification;
-    private final UserIdentificationType type;
+    private final UserIdentificationType identificationType;
     private final UserPhone phone;
     private final UserMembershipStart membershipStart;
     private final UserMembershipEnd membershipEnd;
@@ -18,9 +17,10 @@ public class User {
     private final UserStatus status;
     private final UserCreatedAt createdAt;
 
-    public User(UserName name,
+    public User(UserId id,
+                UserName name,
                 UserIdentification identification,
-                UserIdentificationType type,
+                UserIdentificationType identificationType,
                 UserPhone phone,
                 UserMembershipStart membershipStart,
                 UserMembershipEnd membershipEnd,
@@ -28,22 +28,21 @@ public class User {
                 UserStatus status,
                 UserCreatedAt createdAt) {
 
-        this.id = null;
+        this.id = id;
         this.name = Objects.requireNonNull(name, "El nombre es obligatorio");
         this.identification = Objects.requireNonNull(identification, "La identificación es obligatoria");
-        this.type = Objects.requireNonNull(type, "El tipo de identificación es obligatorio");
+        this.identificationType = Objects.requireNonNull(identificationType, "El tipo de identificación es obligatorio");
         this.phone = Objects.requireNonNull(phone, "El teléfono es obligatorio");
         this.membershipStart = Objects.requireNonNull(membershipStart, "La fecha de inicio es obligatoria");
         this.membershipEnd = Objects.requireNonNull(membershipEnd, "La fecha de fin es obligatoria");
-
 
         if (membershipEnd.getValue().before(membershipStart.getValue())) {
             throw new IllegalArgumentException("La fecha de fin de membresía no puede ser anterior a la de inicio");
         }
 
-        this.paymentMethod = paymentMethod;
-        this.status = status;
-        this.createdAt = createdAt;
+        this.paymentMethod = Objects.requireNonNull(paymentMethod, "El método de pago es obligatorio");
+        this.status = Objects.requireNonNull(status, "El estado es obligatorio");
+        this.createdAt = Objects.requireNonNull(createdAt, "La fecha de creación es obligatoria");
     }
 
     public void assignId(UserId id) {

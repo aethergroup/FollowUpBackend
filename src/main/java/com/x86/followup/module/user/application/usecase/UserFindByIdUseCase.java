@@ -1,6 +1,5 @@
 package com.x86.followup.module.user.application.usecase;
 
-import com.x86.followup.module.user.domain.exception.UserNotFoundError;
 import com.x86.followup.module.user.domain.model.User;
 import com.x86.followup.module.user.domain.model.UserId;
 import com.x86.followup.module.user.domain.repository.UserRepository;
