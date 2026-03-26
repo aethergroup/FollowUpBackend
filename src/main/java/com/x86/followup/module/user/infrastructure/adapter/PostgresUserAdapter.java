@@ -66,11 +66,6 @@ public class PostgresUserAdapter implements UserRepository {
     }
 
     @Override
-    public void deleteById(UserId id) {
-
-    }
-
-    @Override
     public Optional<User> findByIdentification(String identification) {
         return jpaRepository.findByIdentification_Identification(identification)
                 .map(userMapper::toDomain);

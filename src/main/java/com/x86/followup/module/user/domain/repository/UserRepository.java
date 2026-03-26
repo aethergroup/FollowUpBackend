@@ -18,5 +18,4 @@ public interface UserRepository {
     Optional<User> findById(UserId id);
     Optional<User> findByIdentification(UserIdentification identification);
 
-    void deleteById(UserId id);
 }
