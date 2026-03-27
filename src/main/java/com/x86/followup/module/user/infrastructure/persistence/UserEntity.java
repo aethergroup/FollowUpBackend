@@ -21,7 +21,7 @@ public class UserEntity {
     private Integer id;
 
     @Column(name = "gym_id")
-    private Integer gymId = 1;
+    private Integer gymId;
 
     private String name;
 

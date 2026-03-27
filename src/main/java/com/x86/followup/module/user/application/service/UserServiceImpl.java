@@ -2,7 +2,6 @@ package com.x86.followup.module.user.application.service;
 
 import com.x86.followup.module.user.application.usecase.*;
 import com.x86.followup.module.user.domain.model.User;
-import com.x86.followup.module.user.domain.model.UserId;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,11 +42,6 @@ public class UserServiceImpl implements UserService {
     @Transactional(readOnly = true)
     public List<User> findAll() {
         return userFindAllUseCase.execute();
-    }
-
-    @Override
-    public Optional<User> findById(UserId id) {
-        return Optional.empty();
     }
 
     @Transactional(readOnly = true)

@@ -7,6 +7,7 @@ import lombok.Getter;
 @Getter
 public class User {
     private UserId id;
+    private final UserGymId gymId;
     private final UserName name;
     private final UserIdentification identification;
     private final UserIdentificationType identificationType;
@@ -18,6 +19,7 @@ public class User {
     private final UserCreatedAt createdAt;
 
     public User(UserId id,
+                UserGymId gymId,
                 UserName name,
                 UserIdentification identification,
                 UserIdentificationType identificationType,
@@ -29,6 +31,7 @@ public class User {
                 UserCreatedAt createdAt) {
 
         this.id = id;
+        this.gymId = gymId;
         this.name = Objects.requireNonNull(name, "El nombre es obligatorio");
         this.identification = Objects.requireNonNull(identification, "La identificación es obligatoria");
         this.identificationType = Objects.requireNonNull(identificationType, "El tipo de identificación es obligatorio");
