@@ -5,5 +5,6 @@ public record UserCreateRequest(
         String identification,
         String identificationType,
         String phone,
-        String paymentMethod
+        String paymentMethod,
+        Integer gymId
 ) {}

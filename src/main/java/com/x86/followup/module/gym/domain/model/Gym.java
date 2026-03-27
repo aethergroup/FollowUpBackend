@@ -1,7 +1,10 @@
 package com.x86.followup.module.gym.domain.model;
 
+import lombok.Getter;
+
 import java.util.Objects;
 
+@Getter
 public class Gym {
     private GymId id;
     private final GymName name;

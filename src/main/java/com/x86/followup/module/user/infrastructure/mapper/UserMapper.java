@@ -17,6 +17,7 @@ public class UserMapper {
             entity.setId(user.getId().getValue());
         }
 
+        entity.setGymId(user.getGymId().value());
         entity.setName(user.getName().getValue());
         entity.setPhone(user.getPhone().getValue());
         entity.setPaymentMethod(UserPaymentMethod.valueOf(user.getPaymentMethod().name()));
@@ -39,6 +40,7 @@ public class UserMapper {
 
         return new User(
                 new UserId(entity.getId()),
+                new UserGymId(entity.getGymId()),
                 new UserName(entity.getName()),
                 new UserIdentification(entity.getIdentification().getIdentification()),
                 UserIdentificationType.valueOf(entity.getIdentification().getIdentificationType()),

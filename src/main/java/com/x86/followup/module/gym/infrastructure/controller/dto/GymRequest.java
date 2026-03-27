@@ -1,4 +1,9 @@
 package com.x86.followup.module.gym.infrastructure.controller.dto;
 
-public class GymRequest {
-}
+public record GymRequest(
+        String name,
+        String email,
+        String phone,
+        String address,
+        String password
+) {}

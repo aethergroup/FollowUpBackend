@@ -29,6 +29,7 @@ public class UserController {
 
         User newUser = new User(
                 null,
+                new UserGymId(request.gymId()),
                 new UserName(request.name()),
                 new UserIdentification(request.identification()),
                 UserIdentificationType.valueOf(request.identificationType()),
@@ -51,6 +52,7 @@ public class UserController {
 
         User updatedUser = new User(
                 existingUser.getId(),
+                request.gymId() != null ? new UserGymId(request.gymId()) : existingUser.getGymId(),
                 request.name() != null ? new UserName(request.name()) : existingUser.getName(),
                 request.identification() != null ? new UserIdentification(request.identification()) : existingUser.getIdentification(),
                 request.identificationType() != null ? UserIdentificationType.valueOf(request.identificationType()) : existingUser.getIdentificationType(),
@@ -92,6 +94,7 @@ public class UserController {
     private UserResponse mapToResponse(User user) {
         return new UserResponse(
                 user.getId().getValue(),
+                user.getGymId().value(),
                 user.getName().getValue(),
                 user.getPhone().getValue(),
                 user.getStatus().name(),

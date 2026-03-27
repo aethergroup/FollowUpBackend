@@ -14,5 +14,7 @@ public record UserUpdateRequest(
         String status,
 
         @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-        LocalDateTime membershipEnd
+        LocalDateTime membershipEnd,
+
+        Integer gymId
 ) {}
