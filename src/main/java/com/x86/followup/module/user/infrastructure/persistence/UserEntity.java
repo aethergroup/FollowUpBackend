@@ -28,6 +28,9 @@ public class UserEntity {
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
     private IdentificationEntity identification;
 
+    @Column(name = "password")
+    private String password;
+
     private String phone;
 
     @Enumerated(EnumType.STRING)

@@ -1,5 +1,6 @@
 package com.x86.followup.module.shared.infrastructure.config;
 
+import com.x86.followup.module.auth.domain.repository.AuthRepository;
 import com.x86.followup.module.user.application.usecase.*;
 import com.x86.followup.module.user.domain.repository.UserRepository;
 import org.springframework.context.annotation.Bean;
@@ -9,13 +10,18 @@ import org.springframework.context.annotation.Configuration;
 public class UserBeanConfig {
 
     @Bean
-    public UserSaveUseCase userSaveUseCase(UserRepository repository) {
-        return new UserSaveUseCase(repository);
+    public UserSaveUseCase userSaveUseCase(
+            UserRepository repository,
+            AuthRepository authRepository) {
+        return new UserSaveUseCase(repository, authRepository);
     }
 
     @Bean
-    public UserUpdateUseCase userUpdateUseCase(UserRepository repository) {
-        return new UserUpdateUseCase(repository);
+    public UserUpdateUseCase userUpdateUseCase(
+            UserRepository repository,
+            AuthRepository authRepository
+    ) {
+        return new UserUpdateUseCase(repository, authRepository);
     }
 
     @Bean

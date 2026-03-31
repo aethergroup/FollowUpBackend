@@ -42,6 +42,7 @@ public class PostgresUserAdapter implements UserRepository {
 
         existingEntity.setName(user.getName().getValue());
         existingEntity.setPhone(user.getPhone().getValue());
+        existingEntity.setPassword(user.getPassword().getValue());
         existingEntity.setPaymentMethod(user.getPaymentMethod());
         existingEntity.setStatus(user.getStatus());
         existingEntity.setMembershipEnd(user.getMembershipEnd().getValue());

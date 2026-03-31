@@ -4,7 +4,6 @@ import com.x86.followup.module.gym.domain.model.Gym;
 import com.x86.followup.module.gym.domain.model.GymId;
 import com.x86.followup.module.gym.domain.repository.GymRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 

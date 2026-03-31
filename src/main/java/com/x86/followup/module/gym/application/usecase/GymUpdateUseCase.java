@@ -3,7 +3,6 @@ package com.x86.followup.module.gym.application.usecase;
 import com.x86.followup.module.gym.domain.exception.GymNotFoundException;
 import com.x86.followup.module.gym.domain.model.Gym;
 import com.x86.followup.module.gym.domain.repository.GymRepository;
-import com.x86.followup.module.user.domain.exception.UserNotFoundError;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

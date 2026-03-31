@@ -6,7 +6,6 @@ import com.x86.followup.module.gym.domain.model.*;
 import com.x86.followup.module.gym.infrastructure.controller.dto.GymRequest;
 import com.x86.followup.module.gym.infrastructure.controller.dto.GymResponse;
 import com.x86.followup.module.gym.infrastructure.controller.dto.GymUpdateRequest;
-import com.x86.followup.module.user.infrastructure.controller.dto.UserUpdateRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

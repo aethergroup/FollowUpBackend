@@ -20,6 +20,7 @@ public class UserMapper {
         entity.setGymId(user.getGymId().value());
         entity.setName(user.getName().getValue());
         entity.setPhone(user.getPhone().getValue());
+        entity.setPassword(user.getPassword().getValue());
         entity.setPaymentMethod(UserPaymentMethod.valueOf(user.getPaymentMethod().name()));
         entity.setStatus(UserStatus.valueOf(user.getStatus().name()));
         entity.setMembershipStart(user.getMembershipStart().getValue());
@@ -44,6 +45,7 @@ public class UserMapper {
                 new UserName(entity.getName()),
                 new UserIdentification(entity.getIdentification().getIdentification()),
                 UserIdentificationType.valueOf(entity.getIdentification().getIdentificationType()),
+                new UserPassword(entity.getPassword()),
                 new UserPhone(entity.getPhone()),
                 new UserMembershipStart(entity.getMembershipStart()),
                 new UserMembershipEnd(entity.getMembershipEnd()),
