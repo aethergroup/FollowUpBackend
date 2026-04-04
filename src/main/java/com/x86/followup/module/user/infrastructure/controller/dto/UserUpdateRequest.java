@@ -9,6 +9,7 @@ public record UserUpdateRequest(
         String identificationType,
         String identification,
         Integer gymId,
+        String role,
         String name,
         String password,
         String phone,

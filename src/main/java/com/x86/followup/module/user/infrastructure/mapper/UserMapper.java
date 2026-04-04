@@ -18,6 +18,7 @@ public class UserMapper {
         }
 
         entity.setGymId(user.getGymId().value());
+        entity.setRole(user.getRole());
         entity.setName(user.getName().getValue());
         entity.setPhone(user.getPhone().getValue());
         entity.setPassword(user.getPassword().getValue());
@@ -42,6 +43,7 @@ public class UserMapper {
         return new User(
                 new UserId(entity.getId()),
                 new UserGymId(entity.getGymId()),
+                UserRole.valueOf(entity.getRole().name()),
                 new UserName(entity.getName()),
                 new UserIdentification(entity.getIdentification().getIdentification()),
                 UserIdentificationType.valueOf(entity.getIdentification().getIdentificationType()),

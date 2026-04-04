@@ -30,6 +30,7 @@ public class UserController {
         User newUser = new User(
                 null,
                 new UserGymId(request.gymId()),
+                UserRole.valueOf(request.role()),
                 new UserName(request.name()),
                 new UserIdentification(request.identification()),
                 UserIdentificationType.valueOf(request.identificationType()),
@@ -54,6 +55,7 @@ public class UserController {
         User updatedUser = new User(
                 existingUser.getId(),
                 request.gymId() != null ? new UserGymId(request.gymId()) : existingUser.getGymId(),
+                request.role() != null ? UserRole.valueOf(request.role()) : existingUser.getRole(),
                 request.name() != null ? new UserName(request.name()) : existingUser.getName(),
                 request.identification() != null ? new UserIdentification(request.identification()) : existingUser.getIdentification(),
                 request.identificationType() != null ? UserIdentificationType.valueOf(request.identificationType()) : existingUser.getIdentificationType(),
@@ -97,6 +99,7 @@ public class UserController {
         return new UserResponse(
                 user.getId().getValue(),
                 user.getGymId().value(),
+                user.getRole().getValue(),
                 user.getName().getValue(),
                 user.getPhone().getValue(),
                 user.getStatus().name(),

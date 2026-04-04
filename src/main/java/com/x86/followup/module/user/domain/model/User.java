@@ -10,6 +10,7 @@ import lombok.Setter;
 public class User {
     private UserId id;
     private final UserGymId gymId;
+    private final UserRole role;
     private final UserName name;
     private final UserIdentification identification;
     private final UserIdentificationType identificationType;
@@ -23,6 +24,7 @@ public class User {
 
     public User(UserId id,
                 UserGymId gymId,
+                UserRole role,
                 UserName name,
                 UserIdentification identification,
                 UserIdentificationType identificationType,
@@ -36,6 +38,7 @@ public class User {
 
         this.id = id;
         this.gymId = gymId;
+        this.role = Objects.requireNonNull(role, "El rol debe ser usuario ");
         this.name = Objects.requireNonNull(name, "El nombre es obligatorio");
         this.identification = Objects.requireNonNull(identification, "La identificación es obligatoria");
         this.identificationType = Objects.requireNonNull(identificationType, "El tipo de identificación es obligatorio");

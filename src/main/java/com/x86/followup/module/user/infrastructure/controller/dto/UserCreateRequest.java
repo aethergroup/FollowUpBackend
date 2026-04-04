@@ -4,6 +4,7 @@ public record UserCreateRequest(
         String identificationType,
         String identification,
         Integer gymId,
+        String role,
         String name,
         String password,
         String phone,

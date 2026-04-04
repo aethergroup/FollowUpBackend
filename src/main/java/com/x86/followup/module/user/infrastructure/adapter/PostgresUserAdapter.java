@@ -40,6 +40,8 @@ public class PostgresUserAdapter implements UserRepository {
         UserEntity existingEntity = jpaRepository.findById(user.getId().getValue())
                 .orElseThrow(() -> new UserNotFoundError("Usuario no encontrado para actualizar"));
 
+        existingEntity.setGymId(user.getGymId().value());
+        existingEntity.setRole(user.getRole());
         existingEntity.setName(user.getName().getValue());
         existingEntity.setPhone(user.getPhone().getValue());
         existingEntity.setPassword(user.getPassword().getValue());

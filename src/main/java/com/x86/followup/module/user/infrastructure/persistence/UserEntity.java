@@ -1,6 +1,7 @@
 package com.x86.followup.module.user.infrastructure.persistence;
 
 import com.x86.followup.module.user.domain.model.UserPaymentMethod;
+import com.x86.followup.module.user.domain.model.UserRole;
 import com.x86.followup.module.user.domain.model.UserStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -22,6 +23,10 @@ public class UserEntity {
 
     @Column(name = "gym_id")
     private Integer gymId;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role")
+    private UserRole role;
 
     private String name;
 
