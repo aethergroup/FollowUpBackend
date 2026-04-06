@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 @Getter
 public enum UserPaymentMethod {
     EFECTIVO("Pagar en efectivo"),
-    DIGITAL("Pagar por Nequi");
+    DIGITAL("Pagar Digitalmente");
 
     private final String value;
 
