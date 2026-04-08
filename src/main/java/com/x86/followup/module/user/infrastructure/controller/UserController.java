@@ -72,6 +72,30 @@ public class UserController {
         return ResponseEntity.noContent().build();
     }
 
+    @PostMapping("/bulk")
+    public ResponseEntity<Void> createMultiple(@RequestBody List<UserCreateRequest> requests) {
+        LocalDateTime now = LocalDateTime.now();
+
+        List<User> newUsers = requests.stream().map(request -> new User(
+                null,
+                new UserGymId(request.gymId()),
+                UserRole.valueOf(request.role()),
+                new UserName(request.name()),
+                new UserIdentification(request.identification()),
+                UserIdentificationType.valueOf(request.identificationType()),
+                new UserPassword(request.password()),
+                new UserPhone(request.phone()),
+                new UserMembershipStart(Timestamp.valueOf(now)),
+                new UserMembershipEnd(Timestamp.valueOf(now.plusMonths(1))),
+                UserPaymentMethod.valueOf(request.paymentMethod()),
+                UserStatus.ACTIVE,
+                new UserCreatedAt(Timestamp.valueOf(now))
+        )).collect(Collectors.toList());
+
+        newUsers.forEach(userService::save);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<UserResponse> getById(@PathVariable Integer id) {
         UserId userId = new UserId(id);
@@ -99,6 +123,7 @@ public class UserController {
         return new UserResponse(
                 user.getId().getValue(),
                 user.getGymId().value(),
+                user.getIdentification().getValue(),
                 user.getRole().getValue(),
                 user.getName().getValue(),
                 user.getPhone().getValue(),
