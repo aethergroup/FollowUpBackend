@@ -1,0 +1,44 @@
+services:
+  followup_backend:
+    build: .
+    container_name: followup_backend
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres_db:5432/${DB_NAME}
+      - SPRING_DATASOURCE_USERNAME=${DB_USER}
+      - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD}
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=${DB_DDL_STRATEGY}
+      
+      - JWT_SECRET=${JWT_SECRET}
+      - JWT_EXPIRATION=${JWT_EXPIRATION}
+      
+      - SPRING_REDIS_HOST=redis_cache
+      - SPRING_REDIS_PORT=6379
+      - TZ=America/Bogota
+    networks:
+      - app_network         
+      - backend_tunnel_net  
+    deploy:
+      resources:
+        limits:
+          memory: 768M
+        reservations:
+          memory: 512M
+
+  cloudflare-backend-tunnel:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflare-backend-tunnel
+    restart: unless-stopped
+    command: tunnel --no-autoupdate --url http://followup_backend:8080
+    networks:
+      - backend_tunnel_net
+
+networks:
+  app_network:
+    external: true
+    name: x86-followup_app_network
+  
+  backend_tunnel_net:
+    driver: bridge
