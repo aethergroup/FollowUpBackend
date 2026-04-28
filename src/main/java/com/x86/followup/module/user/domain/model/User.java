@@ -16,10 +16,7 @@ public class User {
     private final UserIdentificationType identificationType;
     private UserPassword password;
     private final UserPhone phone;
-    private final UserMembershipStart membershipStart;
-    private final UserMembershipEnd membershipEnd;
     private final UserPaymentMethod paymentMethod;
-    private final UserStatus status;
     private final UserCreatedAt createdAt;
 
     public User(UserId id,
@@ -30,10 +27,7 @@ public class User {
                 UserIdentificationType identificationType,
                 UserPassword password,
                 UserPhone phone,
-                UserMembershipStart membershipStart,
-                UserMembershipEnd membershipEnd,
                 UserPaymentMethod paymentMethod,
-                UserStatus status,
                 UserCreatedAt createdAt) {
 
         this.id = id;
@@ -44,15 +38,8 @@ public class User {
         this.identificationType = Objects.requireNonNull(identificationType, "El tipo de identificación es obligatorio");
         this.password = Objects.requireNonNull(password, "La contraseña no puede estar vacia o nula");
         this.phone = Objects.requireNonNull(phone, "El teléfono es obligatorio");
-        this.membershipStart = Objects.requireNonNull(membershipStart, "La fecha de inicio es obligatoria");
-        this.membershipEnd = Objects.requireNonNull(membershipEnd, "La fecha de fin es obligatoria");
-
-        if (membershipEnd.getValue().before(membershipStart.getValue())) {
-            throw new IllegalArgumentException("La fecha de fin de membresía no puede ser anterior a la de inicio");
-        }
 
         this.paymentMethod = Objects.requireNonNull(paymentMethod, "El método de pago es obligatorio");
-        this.status = Objects.requireNonNull(status, "El estado es obligatorio");
         this.createdAt = Objects.requireNonNull(createdAt, "La fecha de creación es obligatoria");
     }
 
@@ -61,9 +48,5 @@ public class User {
             throw new UserExistException("El usuario ya tiene un ID asignado.");
         }
         this.id = Objects.requireNonNull(id, "El ID generado no puede ser nulo");
-    }
-
-    public boolean isSubscriptionActive() {
-        return UserStatus.ACTIVE.equals(status);
     }
 }

@@ -2,7 +2,6 @@ package com.x86.followup.module.user.infrastructure.persistence;
 
 import com.x86.followup.module.user.domain.model.UserPaymentMethod;
 import com.x86.followup.module.user.domain.model.UserRole;
-import com.x86.followup.module.user.domain.model.UserStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -40,13 +39,6 @@ public class UserEntity {
 
     @Enumerated(EnumType.STRING)
     private UserPaymentMethod paymentMethod;
-
-    private Timestamp membershipStart;
-
-    private Timestamp membershipEnd;
-
-    @Enumerated(EnumType.STRING)
-    private UserStatus status;
 
     @CreatedDate
     @Column(name = "created_at", nullable = false, updatable = false)

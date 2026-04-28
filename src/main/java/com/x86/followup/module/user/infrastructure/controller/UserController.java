@@ -36,10 +36,7 @@ public class UserController {
                 UserIdentificationType.valueOf(request.identificationType()),
                 new UserPassword(request.password()),
                 new UserPhone(request.phone()),
-                new UserMembershipStart(Timestamp.valueOf(now)),
-                new UserMembershipEnd(Timestamp.valueOf(now.plusMonths(1))),
                 UserPaymentMethod.valueOf(request.paymentMethod()),
-                UserStatus.ACTIVE,
                 new UserCreatedAt(Timestamp.valueOf(now))
         );
 
@@ -61,10 +58,7 @@ public class UserController {
                 request.identificationType() != null ? UserIdentificationType.valueOf(request.identificationType()) : existingUser.getIdentificationType(),
                 request.password() != null ? new UserPassword(request.password()) : existingUser.getPassword(),
                 request.phone() != null ? new UserPhone(request.phone()) : existingUser.getPhone(),
-                existingUser.getMembershipStart(),
-                request.membershipEnd() != null ? new UserMembershipEnd(Timestamp.valueOf(request.membershipEnd())) : existingUser.getMembershipEnd(),
                 request.paymentMethod() != null ? UserPaymentMethod.valueOf(request.paymentMethod()) : existingUser.getPaymentMethod(),
-                request.status() != null ? UserStatus.valueOf(request.status()) : existingUser.getStatus(),
                 existingUser.getCreatedAt()
         );
 
@@ -85,10 +79,7 @@ public class UserController {
                 UserIdentificationType.valueOf(request.identificationType()),
                 new UserPassword(request.password()),
                 new UserPhone(request.phone()),
-                new UserMembershipStart(Timestamp.valueOf(now)),
-                new UserMembershipEnd(Timestamp.valueOf(now.plusMonths(1))),
                 UserPaymentMethod.valueOf(request.paymentMethod()),
-                UserStatus.ACTIVE,
                 new UserCreatedAt(Timestamp.valueOf(now))
         )).collect(Collectors.toList());
 
@@ -126,9 +117,7 @@ public class UserController {
                 user.getIdentification().getValue(),
                 user.getRole().getValue(),
                 user.getName().getValue(),
-                user.getPhone().getValue(),
-                user.getStatus().name(),
-                user.getMembershipEnd().getValue().toString()
+                user.getPhone().getValue()
         );
     }
 }

@@ -6,7 +6,5 @@ public record UserResponse(
         String identification,
         String role,
         String name,
-        String phone,
-        String status,
-        String membershipEnd
+        String phone
 ) {}

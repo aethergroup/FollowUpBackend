@@ -23,9 +23,6 @@ public class UserMapper {
         entity.setPhone(user.getPhone().getValue());
         entity.setPassword(user.getPassword().getValue());
         entity.setPaymentMethod(UserPaymentMethod.valueOf(user.getPaymentMethod().name()));
-        entity.setStatus(UserStatus.valueOf(user.getStatus().name()));
-        entity.setMembershipStart(user.getMembershipStart().getValue());
-        entity.setMembershipEnd(user.getMembershipEnd().getValue());
 
         if (user.getIdentification() != null) {
             IdentificationEntity idEntity = new IdentificationEntity();
@@ -49,10 +46,7 @@ public class UserMapper {
                 UserIdentificationType.valueOf(entity.getIdentification().getIdentificationType()),
                 new UserPassword(entity.getPassword()),
                 new UserPhone(entity.getPhone()),
-                new UserMembershipStart(entity.getMembershipStart()),
-                new UserMembershipEnd(entity.getMembershipEnd()),
                 UserPaymentMethod.valueOf(String.valueOf(entity.getPaymentMethod())),
-                UserStatus.valueOf(String.valueOf(entity.getStatus())),
                 new UserCreatedAt(entity.getCreatedAt())
         );
     }
